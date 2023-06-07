@@ -1,7 +1,6 @@
 package com.example.blogpostbe.entities;
 
 import javax.persistence.*;
-import javax.xml.stream.events.Comment;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +20,13 @@ public class BlogEnt {
     @JoinColumn(name = "user_id")
     private UserEnt author;
 
-    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "blog",
+               cascade = CascadeType.ALL,
+               orphanRemoval = true)
     private List<CommentEnt> comments = new ArrayList<>();
 
-    public BlogEnt(String title, String body, LocalDateTime createdDate, LocalDateTime updatedDate, UserEnt author) {
+    public BlogEnt(Long id, String title, String body, LocalDateTime createdDate, LocalDateTime updatedDate, UserEnt author) {
+        this.id = id;
         this.title = title;
         this.body = body;
         this.createdDate = createdDate;

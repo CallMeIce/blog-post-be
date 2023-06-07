@@ -1,7 +1,5 @@
 package com.example.blogpostbe.entities;
 
-import org.apache.catalina.User;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
