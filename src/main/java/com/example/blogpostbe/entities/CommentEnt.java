@@ -1,5 +1,7 @@
 package com.example.blogpostbe.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -15,6 +17,7 @@ public class CommentEnt {
     private LocalDateTime createdDate;
 
     @ManyToOne
+    @JsonIgnoreProperties
     @JoinColumn(name = "user_id")
     private UserEnt author;
 
@@ -22,10 +25,7 @@ public class CommentEnt {
     @JoinColumn(name = "blog_id")
     private BlogEnt blog;
 
-    // Constructors
-
-    public CommentEnt() {
-    }
+    public CommentEnt() {}
 
     public CommentEnt(String content, LocalDateTime createdDate, UserEnt author, BlogEnt blog) {
         this.content = content;
@@ -33,8 +33,6 @@ public class CommentEnt {
         this.author = author;
         this.blog = blog;
     }
-
-    // Getters and Setters
 
     public Long getId() {
         return id;
